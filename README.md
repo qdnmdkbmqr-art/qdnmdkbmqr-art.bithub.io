@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/24549499/README.md)
 # 思维流 · MindStream
 
 一个基于思维导图的知识版"抖音"，通过 AI 驱动的多维度思考，帮助你发散思维、头脑风暴、寻找灵感。
