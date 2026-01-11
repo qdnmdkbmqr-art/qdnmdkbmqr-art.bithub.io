@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>思维流 · MindStream</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div id="app">
+        <!-- 顶部工具栏 -->
+        <header class="toolbar">
+            <button id="search-btn" class="icon-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+            <button id="import-btn" class="icon-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                </svg>
+            </button>
+            <div id="question-indicator"></div>
+            <button id="refresh-btn" class="icon-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- 思维导图容器 -->
+        <div id="canvas-container">
+            <canvas id="mindmap-canvas"></canvas>
+
+            <!-- 中心问题卡片 -->
+            <div id="center-card" class="question-card">
+                <div class="question-text">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 搜索面板 -->
+        <div id="search-panel" class="hidden">
+            <div class="search-content">
+                <input type="text" id="search-input" placeholder="输入你想探索的问题...">
+                <button id="search-submit">探索</button>
+                <button id="search-close">取消</button>
+            </div>
+        </div>
+
+        <!-- 导入面板 -->
+        <div id="import-panel" class="hidden">
+            <div class="import-content">
+                <h3>导入知识库</h3>
+                <p class="hint">粘贴 JSON 格式的思维导图数据</p>
+                <textarea id="import-input" placeholder='{
+  "text": "核心主题",
+  "children": [
+    {
+      "text": "分支1",
+      "children": [
+        {"text": "子节点1", "children": []},
+        {"text": "子节点2", "children": []}
+      ]
+    },
+    {
+      "text": "分支2",
+      "children": []
+    }
+  ]
+}'></textarea>
+                <div class="import-actions">
+                    <button id="import-submit">导入</button>
+                    <button id="import-close">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- API 配置提示 -->
+        <div id="api-prompt" class="modal">
+            <div class="modal-content">
+                <h3>欢迎使用思维流</h3>
+                <p>请输入你的 Anthropic API Key：</p>
+                <input type="password" id="api-key-input" placeholder="sk-ant-...">
+                <button id="api-key-submit">开始探索</button>
+                <p class="hint">API Key 仅保存在本地浏览器，不会上传</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="mindmap.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
